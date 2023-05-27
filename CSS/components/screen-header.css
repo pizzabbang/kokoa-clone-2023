@@ -10,8 +10,9 @@
   top: 25px;*/
   display: flex;
   justify-content: space-between;
-  padding: 40px 20px 20px;
+  padding: 40px var(--horizontal-space) var(--horizontal-space);
   align-items: center;
+  margin-bottom: 15px;
 }
 .screen-header__title {
   font-size: 32px;
@@ -19,4 +20,16 @@
 }
 .screen-header__icons span {
   margin-left: 25px;
+}
+.screen-header__icons span i {
+  position: relative;
+}
+.screen-header__dot {
+  background-color: tomato;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  bottom: 17px;
+  right: -8px;
 }
