@@ -43,3 +43,13 @@
   display: block;
   margin-bottom: 10px;
 }
+.user-component__text {
+  position: relative;
+}
+.user-component__text i {
+  color: tomato;
+  opacity: 0.8;
+  position: absolute;
+  bottom: 0px;
+  right: -20px;
+}
