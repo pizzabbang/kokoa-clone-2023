@@ -1,6 +1,6 @@
 #chat-screen {
   background-color: #abc1d1;
-  height: 11000vh;
+  height: 500vh;
 }
 #chat-screen .status-bar {
   background-color: #abc1d1;
@@ -13,11 +13,22 @@
   background-color: #abc1d1;
   z-index: 1;
 }
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
 .main-chat {
   margin-top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 0.8s linear;
 }
 .chat__timestamp {
   color: white;
@@ -27,10 +38,24 @@
   font-size: 14px;
   margin-bottom: 25px;
 }
+@keyframes messageSlide {
+  form {
+    transform: translateX(0px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
 .message-row {
   width: 100%;
   display: flex;
   margin-bottom: 25px;
+}
+.message-row--opposite {
+  transform: translateX(-190px);
+  animation: messageSlide 0.7s ease-in-out forwards;
 }
 .message-row img {
   width: 50px;
@@ -61,6 +86,9 @@
 }
 .message-row--own {
   justify-content: flex-end;
+  transform: translateX(250px);
+  animation: messageSlide 0.7s ease-in-out forwards;
+  animation-delay: 0.5s;
 }
 .message-row--own .message__bubble {
   background-color: var(--yellow);
@@ -82,6 +110,7 @@
   padding: 5px 25px;
   box-sizing: border-box;
   align-items: center;
+  transition: transform 0.7s ease-in-out;
 }
 .reply .reply__column:first-child {
   width: 10%;
@@ -99,6 +128,7 @@
   border: var(--main-border);
   border-radius: 25px;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
 .reply__column:last-child > i,
 .reply__column:last-child button {
@@ -123,4 +153,21 @@
 .reply__column button:focus,
 .reply__column button:active {
   outline: none;
+}
+.reply .reply__column:first-child,
+.reply .fa-smile-wink,
+.reply button {
+  transition: opacity 0.3s ease-in-out;
+}
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-smile-wink,
+.reply:focus-within button {
+  opacity: 0;
+}
+.reply input:focus {
+  width: 98vw;
+  transform: translateX(-14%) translateY(-80px);
+}
+.reply:focus-within {
+  transform: translateY(80px);
 }
